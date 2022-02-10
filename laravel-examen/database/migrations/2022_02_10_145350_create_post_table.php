@@ -16,10 +16,13 @@ return new class extends Migration
         Schema::create('post', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->boolean("caducable");
-            $table->boolean("comentable");
-            $table->string("acceso");
-            $table->string("id_usuario");
+            $table->boolean("caducable")->nullable(false)->change();
+            $table->boolean("comentable")->nullable(false)->change();
+            $table->string("acceso")->nullable(false)->change();
+            $table->string("id_usuario")->nullable(false)->change();
+            $table->string("titulo")->nullable(false)->change();
+            $table->string("extracto");
+            $table->string("contenido")->nullable(false)->change();
         });
     }
 

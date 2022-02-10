@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/posts',function(){
+    return view('formulario_posts');
+});
+
+Route::resource('posts', 'PostController')
+    ->parameters(['posts' => 'posts'])
+    ->names('posts');
