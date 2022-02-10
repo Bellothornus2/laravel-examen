@@ -28,13 +28,13 @@ class PostController extends Controller
         //$name = $request->input('name');
         $posts = new PostModel;
         $posts->name       = $request->input('name');
-        $posts->email      = Input::get('email');
-        $posts->caducable = Input::get('caducable');
-        $posts->comentable = Input::get('comentable');
-        $posts->acceso = Input::get("acceso");
-        $posts->extracto = Input::get("extracto");
-        $posts->titulo = Input::get("titulo");
-        $posts->contenido = Input::get("contenido");
+        $posts->email      = $request->input('email');
+        $posts->caducable = $request->input('caducable');
+        $posts->comentable = $request->input('comentable');
+        $posts->acceso = $request->input("acceso");
+        $posts->extracto = $request->input("extracto");
+        $posts->titulo = $request->input("titulo");
+        $posts->contenido = $request->input("contenido");
         $posts->save();
         // redirect
         Session::flash('message', 'Successfully created posts!');
