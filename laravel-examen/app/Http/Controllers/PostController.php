@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PostModel;
 
 class PostController extends Controller
 {
@@ -21,9 +22,23 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        // store
+        //$name = $request->input('name');
+        $posts = new PostModel;
+        $posts->name       = $request->input('name');
+        $posts->email      = Input::get('email');
+        $posts->caducable = Input::get('caducable');
+        $posts->comentable = Input::get('comentable');
+        $posts->acceso = Input::get("acceso");
+        $posts->extracto = Input::get("extracto");
+        $posts->titulo = Input::get("titulo");
+        $posts->contenido = Input::get("contenido");
+        $posts->save();
+        // redirect
+        Session::flash('message', 'Successfully created posts!');
+        return Redirect::to('/');
     }
 
     /**
@@ -34,7 +49,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create( $request->validated() );
+
+        return redirect()->route('posts.index')->with('status', 'El proyecto fue creado con éxito');
     }
 
     /**

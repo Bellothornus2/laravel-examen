@@ -21,6 +21,8 @@ Route::get('/posts',function(){
     return view('formulario_posts');
 });
 
-Route::resource('posts', 'PostController')
-    ->parameters(['posts' => 'posts'])
-    ->names('posts');
+Route::post('/posts_create',\App\Http\Controllers\PostController::class.'@create')->name('posts.create');
+
+#Route::resource('posts', 'PostController')
+#    ->parameters(['posts' => 'posts'])
+#   ->names('posts');

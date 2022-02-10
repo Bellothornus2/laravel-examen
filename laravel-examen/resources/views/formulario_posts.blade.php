@@ -9,7 +9,7 @@
 
             <form class="bg-white shadow rounded py-3 px-4"
                 method="POST"
-                action="/posts"
+                action="/posts_create"
             >
                 @csrf
                 <h1 class="display-4">@lang('Posts')</h1>
